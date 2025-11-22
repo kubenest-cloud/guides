@@ -112,7 +112,7 @@ Open Radarr/Raweb UI, navigate to `Settings` (left side menu), and under:
 
 ### Prowlarr
 
-Open Prowlarr UI, navigate to `Indexers` (left side menu) and your prefered
+Open Prowlarr UI, navigate to `Indexers` (left side menu) and add your prefered
 indexers. These indexers are used by Prowlarr when looking for files to
 download. Make sure to have at least 3-4 good indexers in place. Search on-line
 for advice on the best indexers for the content you're looking for.
