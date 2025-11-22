@@ -1,2 +1,3 @@
-# guides
-Public how-tos.
+# Kubenest Public Guides
+
+Curated guides on how to get things done.

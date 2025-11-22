@@ -1,0 +1,153 @@
+services:
+  # Transmission (web version) is used to download Torrent files.
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+      - USER=${TRANSMISSION_USER}
+      - PASS=${TRANSMISSION_PASSWORD}
+    volumes:
+      - /data/transmission:/config
+      - /data/downloads:/downloads
+      - /data/watch:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
+    dns:
+      - ${PUBLIC_DNS}
+
+  # Indexer of torrent sites.
+  # Receives requests from sonnarr and radarr, finds the torrent and sends to transmission.
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    volumes:
+      - /data/prowlarr:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+    dns:
+      - ${PUBLIC_DNS}
+
+  # Media manager for movies. Gets request from jellysseerr and converts to movie tag and sends to prowlarr.
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    volumes:
+      - /data/radarr:/config
+      - /data/movies:/movies
+      - /data/downloads:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+    dns:
+      - ${PUBLIC_DNS}
+
+  # Media manager for tv shows and animes (same as radarr, but for shows). Gets request from jellysseerr and converts to movie tag and sends to prowlarr.
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    volumes:
+      - /data/sonarr:/config
+      - /data/series:/tv
+      - /data/downloads:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+    dns:
+      - ${PUBLIC_DNS}
+
+  # User interface which has a catalog of all available movie, shows and animes that you can choose one and request download.
+  # It will send your request to radarr or sonarr.
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=${TIMEZONE}
+    ports:
+      - 5055:5055
+    volumes:
+      - /data/jellyseerr:/app/config
+    restart: unless-stopped
+    dns:
+      - ${PUBLIC_DNS}
+
+  # Unpack content in volume it and moves them to jellyfin directories.
+  unpackerr:
+    image: golift/unpackerr
+    container_name: unpackerr
+    volumes:
+      - /data/downloads:/downloads
+    restart: always
+    user: 1000:1000
+    environment:
+      - TZ=${TIMEZONE}
+      - UN_LOG_FILE=/downloads/unpackerr.log
+      - UN_SONARR_0_URL=http://sonarr:8989
+      - UN_SONARR_0_API_KEY=${SONARR_API_KEY}
+      - UN_RADARR_0_URL=http://radarr:7878
+      - UN_RADARR_0_API_KEY=${RADARR_API_KEY}
+
+  # Media server. Install the client (TV, mobile or web) to watch your downloads.
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+      - VAAPI_DRIVER=iHD # this is for sharing GPU processment from the host with the container
+      - LIBVA_DRIVER_NAME=iHD # this is for sharing GPU processment from the host with the container
+    volumes:
+      - /data/jellyfin:/config
+      - /data/series:/data/tvshows
+      - /data/movies:/data/movies
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    restart: unless-stopped
+    group_add:
+      - '922'
+      - '44'
+    devices: # this is for sharing GPU processment from the host with the container
+      - /dev/dri:/dev/dri
+    dns:
+      - ${PUBLIC_DNS}
+
+  # Subtitle download service.
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    volumes:
+      - /data/bazarr/config:/config
+      - /data/movies:/movies #optional
+      - /data/tv:/tv #optional
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+    dns:
+      - ${PUBLIC_DNS}
