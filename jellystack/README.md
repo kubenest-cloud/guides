@@ -8,10 +8,46 @@
 - At least 4 GB RAM
 - At least 4 cores (Cortex-A72 or superior)
 
-### CPU/Memory utilization on a Raspberry Pi 4 B
+#### CPU/Memory utilization on a Raspberry Pi 4 B
 
 While streaming (1080p) with embedded subtitles:
 <img src="./resource-utilization.jpg">
+
+### Directory structure
+
+Before running the `compose.yml`, the following directory structure needs to be
+present in the host:
+
+```
+/data/
+├── bazarr
+│   └── config
+├── config
+├── downloads
+│   ├── complete
+│   └── incomplete
+├── jellyfin
+├── jellyseerr
+├── movies
+├── prowlarr
+├── radarr
+├── series
+├── sonarr
+├── transmission
+├── tv
+└── watch
+```
+
+> **💡 Tip!** Mount any of these volumes to external devices (NAS, for example)
+> if you wish more storage, pay attention to `tv`, `movies`, and `downloads` as
+> these will host large media files.
+
+#### One-liner to create the directory structure:
+
+```bash
+mkdir -p /data/{bazarr/config,config,downloads/{complete,incomplete},jellyfin,jellyseerr,movies,prowlarr,radarr,series,sonarr,transmission,tv,watch}
+```
+
 
 ## Getting access to the services
 
