@@ -53,7 +53,7 @@ mkdir -p /data/{bazarr/config,config,downloads/{complete,incomplete},jellyfin,je
 
 As configured by `compose.yml`, services are acessible via their web UI.
 
-At the IP address of your Raspberry Pi (or any other single board computer or
+Add the IP address of your Raspberry Pi (or any other single board computer or
 server) to your computer host files, example using `media.center.local`:
 
 ```
