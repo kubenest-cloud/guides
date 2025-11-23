@@ -7,10 +7,12 @@
 - Docker (compose)
 - At least 4 GB RAM
 - At least 4 cores (Cortex-A72 or superior)
+- A VPN service such as NordVPN or Surfshark is **strongly** advised.
 
-#### CPU/Memory utilization on a Raspberry Pi 4 B
+### CPU/Memory utilization on a Raspberry Pi 4 B
 
-While streaming (1080p) with embedded subtitles:
+While this is not a true benchmark, streaming (1080p) with embedded subtitles
+typically shows the following usage:
 <img src="./resource-utilization.jpg">
 
 ### Directory structure
@@ -47,6 +49,8 @@ present in the host:
 ```bash
 mkdir -p /data/{bazarr/config,config,downloads/{complete,incomplete},jellyfin,jellyseerr,movies,prowlarr,radarr,series,sonarr,transmission,tv,watch}
 ```
+
+We will mount these directories as volumes for the services defined in `compose.yml`.
 
 
 ## Getting access to the services
