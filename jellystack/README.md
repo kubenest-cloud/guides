@@ -143,6 +143,7 @@ Generate an API key to used with Jellyseerr. Navigate to `Settings > Dashboard`,
 then `API Keys` (left side menu), click `New API Key`, name it `Jellyseerr` or
 any other friendly name. Copy the key as it will be used in the following step
 (below).
+Navigate to `Libraries` and add a Movie and Shows library, make sure to add the folder (`/data/tvshows` and /data/movies`).
 
 ### Jellyseerrr
 
