@@ -27,6 +27,8 @@ present in the host:
 ├── config
 ├── downloads
 │   ├── complete
+│   │   ├── radarr
+│   │   └── tv-sonarr
 │   └── incomplete
 ├── jellyfin
 ├── jellyseerr
@@ -47,7 +49,7 @@ present in the host:
 #### One-liner to create the directory structure:
 
 ```bash
-mkdir -p /data/{bazarr/config,config,downloads/{complete,incomplete},jellyfin,jellyseerr,movies,prowlarr,radarr,series,sonarr,transmission,tv,watch}
+mkdir -p /data/{bazarr/config,config,downloads/{complete/{radarr,tv-sonarr},incomplete},jellyfin,jellyseerr,movies,prowlarr,radarr,series,sonarr,transmission,tv,watch}
 ```
 
 We will mount these directories as volumes for the services defined in `compose.yml`.
