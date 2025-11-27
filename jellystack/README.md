@@ -91,6 +91,18 @@ While not necessary, this will allow accessing services with a proper name, such
 
 ## Configuration
 
+### *arr
+
+Authentication is required in all *arr stack, when accessing for the first time
+you will be prompt with the following screen:
+
+<p align="center">
+<img height="460" alt="auth-required" src="https://github.com/user-attachments/assets/d7e48967-67bd-497a-8eac-589e0ca376b6" />
+</p>
+
+* Disable for local addresses;
+* Set username and password.
+
 ### Radarr & Sonarr
 
 Radarr and Sonarr are both media managers, the former handles movies and the
@@ -136,6 +148,12 @@ navigating to `Settings` (left side menu), and under:
       `Settings > General > Api Key`). Add the apps here one by one:
         - Radarr: `http://radarr:7878` + Radarr API key
         - Sonarr: `http://sonarr:8989` + Sonarr API key
+            - Example:
+     
+<p align="center">
+<img height="565" alt="add-radar-app" src="https://github.com/user-attachments/assets/f755e872-4904-4ef0-a26c-6d7b90a528eb" />
+</p>
+
 - **Download Clients**:
     - Setup Transmission as a download client (similar to Sonarr/Radarr).
         - Host: `transmission`
