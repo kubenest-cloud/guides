@@ -67,7 +67,14 @@ server) to your computer host files, example using `media.center.local`:
 192.168.1.100       media.center.local
 ```
 
-While not necessary, this will allow accessing services with a proper name:
+Alternatively, in most Wifi routers (access points) you have the option to configure
+internal DNS records, example (Odido NL, Zyxel EX5601-T1):
+
+<p align="center">
+<img width="800" alt="Screenshot 2025-11-27 at 15 40 07" src="https://github.com/user-attachments/assets/d2e0c17c-337c-46c2-9fb9-8468af2b5900" />
+</p>
+
+While not necessary, this will allow accessing services with a proper name, such as:
 
 |Service|Endpoint|
 |---|---|
