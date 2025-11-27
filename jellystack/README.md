@@ -46,14 +46,6 @@ present in the host:
 > if you wish more storage, pay attention to `tv`, `movies`, and `downloads` as
 > these will host large media files.
 
-#### One-liner to create the directory structure:
-
-```bash
-mkdir -p /data/{bazarr/config,config,downloads/{complete/{radarr,tv-sonarr},incomplete},jellyfin,jellyseerr,movies,prowlarr,radarr,series,sonarr,transmission,tv,watch}
-```
-
-We will mount these directories as volumes for the services defined in `compose.yml`.
-
 
 ## Getting access to the services
 
@@ -90,6 +82,23 @@ While not necessary, this will allow accessing services with a proper name, such
 
 > **💡 Tip!** Disable DHCP client on the `media.center.local` and setup the IP
 > address manually to prevent unexpected changes.
+
+## Running
+
+Create the folders as pre-requisite:
+
+`$ mkdir -p /data/{bazarr/config,config,downloads/{complete/{radarr,tv-sonarr},incomplete},jellyfin,jellyseerr,movies,prowlarr,radarr,series,sonarr,transmission,tv,watch}` 
+
+Copy the `compose.yml` and `.env` to `/data` (or any other folder of your preference),
+navigate to it and set the `.env` accordingly. The API keys in the `.env` file can be
+added later, once you configure Sonarr and Radarr. These API keys will be used by
+Unpackerr, to unpack (move) the downloaded media into their correct folder.
+
+Run:
+
+`$ docker compose up -d` 
+
+You should be able to access the services in your local network.
 
 ## Configuration
 
@@ -201,3 +210,4 @@ https://github.com/jellyfin/jellyfin-androidtv
 ### Other clients
 
 https://jellyfin.org/downloads/clients/
+
