@@ -116,7 +116,13 @@ Open Radarr/Raweb UI, navigate to `Settings` (left side menu), and under:
 - **Media Management:**
     - Select: Rename movies
     - Select: Replace illegal characters
-    - Verify if the Root Folder section lists the `/movies` folder.
+    - Verify if the Root Folder section lists the `/movies` folder for Radarr, or `/tv` for Sonarr.
+        - Example:
+ 
+<p align="center">
+    <img height="492" alt="add-root-folder" src="https://github.com/user-attachments/assets/7e1f76e8-f64c-4a31-9851-91a7537842e0" />
+</p>
+  
 - **Profiles:**
     - Add your prefered profiles for video downloads (1080P, 720P). By default
       the media manager will download the highest available quality, which
