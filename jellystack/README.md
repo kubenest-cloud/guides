@@ -234,7 +234,7 @@ Make sure the listening port is **open** on the `Network` tab:
 > </p>
 
 > ⚠️ Most VPN providers (such as NordVPN) block incoming traffic (you will see a
-> **closed** peering port no matter what. In such case you won't be able to "seed"
+> **closed** peering port no matter what). In such case you won't be able to "seed"
 > traffic, which **might** impact how much you can download from trackers.
 
 ## Clients
