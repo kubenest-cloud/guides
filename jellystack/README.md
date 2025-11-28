@@ -157,6 +157,12 @@ indexers. These indexers are used by Prowlarr when looking for files to
 download. Make sure to have at least 3-4 good indexers in place. Search on-line
 for advice on the best indexers for the content you're looking for.
 
+Example:
+
+<p align="center">
+    <img width="1906" height="556" alt="Screenshot 2025-11-28 at 16 44 52" src="https://github.com/user-attachments/assets/0a1e07fd-7003-42a7-b888-673a696f8293" />
+</p>
+
 You also need to configure Prowlarr to receive requests from media managers by
 navigating to `Settings` (left side menu), and under:
 
