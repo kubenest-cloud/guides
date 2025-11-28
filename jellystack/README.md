@@ -195,6 +195,34 @@ Jellyfin hostname, port and API Key obtained in the previous step.
 Under `Settings > Services` add both Radarr and Sonarr services (hostname, port
 and API key needed for each.)
 
+### Transmission
+
+Transmission is just a client to download .torrent or magnet links as instructed
+by Prowlarr. Configuration is done with `.env`:
+
+```
+TRANSMISSION_USER=example
+TRANSMISSION_PASSWORD=example
+```
+
+Access the service at port `9091`, navigate to menu on the top right corner, go
+to `Edit preferences` and adjust the settings according to your preference.
+
+Make sure the listening port is **open** on the `Network` tab:
+
+<p align="center">
+<img height="321" alt="image" src="https://github.com/user-attachments/assets/2118808b-5388-45ec-b778-37bca274dcc3" />
+</p>
+
+> ⚠️ If the port is **closed** you might need to set up a NAT rule in your router
+> allowing external network to connect to port `51313` (TCP/UDP) on the IP
+> address of the device hosting Transmission, example:
+>
+> <p align="center">
+>     <img height="360" alt="image" src="https://github.com/user-attachments/assets/78cbdf1b-4e81-4bcc-8186-39637a463ae3" />
+> </p>
+
+
 ## Clients
 
 ### 📺 Samsung TV
