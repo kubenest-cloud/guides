@@ -193,7 +193,12 @@ Open Jellyserr UI, navigate to `Settings > Jellyfin` and configure add the
 Jellyfin hostname, port and API Key obtained in the previous step.
 
 Under `Settings > Services` add both Radarr and Sonarr services (hostname, port
-and API key needed for each.)
+and API key needed for each). Make sure both Radarr and Sonarr are marked as 
+"Default Server", example:
+
+<p align="center">
+    <img height="480" alt="Screenshot 2025-11-28 at 11 41 34" src="https://github.com/user-attachments/assets/e72b251e-da5c-49a5-b8c8-c99d150a3005" />
+</p>
 
 ### Transmission
 
